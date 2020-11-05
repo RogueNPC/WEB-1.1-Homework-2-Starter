@@ -91,9 +91,9 @@ def calculator_results():
         result = int(num1) / int(num2)
 
     context = {
-        'num1': request.args.get('operand1'),
-        'operation': request.args.get('operation'),
-        'num2': request.args.get('operand2'),
+        'num1': num1,
+        'operation': operation,
+        'num2': num2,
         'result': result
     }
 
@@ -137,8 +137,14 @@ def compliments():
 @app.route('/compliments_results')
 def compliments_results():
     """Show the user some compliments."""
+    num_compliments = request.args.get('num_compliments')
+    rand_compliments = random.sample(list_of_compliments, int(num_compliments))
+
     context = {
         # TODO: Enter your context variables here.
+        'name': request.args.get('users_name'),
+        'wants_compliments': request.args.get('wants_compliments'),
+        'rand_compliments': rand_compliments
     }
 
     return render_template('compliments_results.html', **context)

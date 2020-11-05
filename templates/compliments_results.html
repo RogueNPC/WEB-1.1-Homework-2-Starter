@@ -5,10 +5,15 @@
     </head>
     <body>
         <!-- Your HTML code goes here! -->
+        <p>Hello {{ name }}!</p>
 
-        
-
-        
-        
+        <p>You are...</p>
+        {% if (wants_compliments == 'yes') %}
+            <ul>
+            {% for compliment in rand_compliments %}
+                <li>{{ compliment }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
     </body>
 </html>
