@@ -62,13 +62,16 @@ def secret_message():
     the POST method to keep it a secret!"""
     return """
     <form action="/message_results" method=POST>
-        What
+        Enter a secret message <br/>
+        <input type="text" name="message"> <br/><br/>
+        <input type="submit" value="Submit!">
     """
 
 @app.route('/message_results', methods=['POST'])
 def message_results():
     """Shows the user their message, with the letters in sorted order."""
-    pass
+    users_message = request.form.get('message')
+    return f'{sort_letters(users_message)}'
 
 @app.route('/calculator')
 def calculator():
